@@ -2,36 +2,51 @@ console.log("Current Date: ",data.currentDate)
 
 const containerCards = document.getElementById('elements')
 
-let upcomingData = []
+
+let upcomingData=[]
 
 
-for(let i=0; i< data.events.length; i++){
-  
+
+showCards(data.events,containerCards)
+
+function showCards(array,container) {
+  let upcomingData=[]
+  for (i in array) {
+
     if (data.currentDate > data.events[i].date){
-      upcomingData.push(data.events[i])
+      upcomingData +=  `<div class="card" style="width: 20rem;">
+      <img src="${i.image}" class="card-img-top"  alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${i.name}</h5>
+        <p class="card-text">${i.description}</p>
+        <p class="card-text">$${i.price}</p>
+        <a href="./details.html" class="btn btn-primary">Details</a>
+      </div>
+    </div>`
     }
-    containerCards.innerHTML = upcomingData
+    
+    container.innerHTML = upcomingData
+
+  }
 }
-
-console.log("Upcoming Data: ",upcomingData)
-
-
-
-
-
 
 
 
 /*
+let upcomingData=[]
 
-mostrarPropiedad(data.events,"date")
-
-
-
-function mostrarPropiedad(array,propiedad) {
+for(let i=0; i< data.events.length; i++){
   
-  for (let i = 0; i < array.length; i++) {
-      console.log(data.events[i].date);
-  }
+    if (data.currentDate > data.events[i].date){
+      upcomingData +=  `<div class="card" style="width: 20rem;">
+      <img src="${i.image}" class="card-img-top"  alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${i.name}</h5>
+        <p class="card-text">${i.description}</p>
+        <p class="card-text">$${i.price}</p>
+        <a href="./details.html" class="btn btn-primary">Details</a>
+      </div>
+    </div>`    }
+    containerCards.innerHTML = upcomingData
 }
 */
