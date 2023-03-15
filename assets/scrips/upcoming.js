@@ -1,5 +1,37 @@
 console.log("Current Date: ",data.currentDate)
 
+const contenedorChecks = document.getElementById('checkContainer')
+
+
+crearCheckboxes(data.events)
+
+function crearCheckboxes(arrayInfo){
+  let checks = ''
+  let checkboxCategory = data.events.map (events => events.category)
+//console.log (checkboxCategory)
+
+  let checkboxCategorySinRepetir = new Set(checkboxCategory.sort((a,b)=>{
+  if(a>b){
+      return 1
+  }
+  if(a<b){
+      return -1
+  }
+  return 0
+}))
+
+//console.log(checkboxCategorySinRepetir)
+
+checkboxCategorySinRepetir.forEach(elemento =>{
+  checks += `<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox"  id="${elemento}" value="${elemento}">
+  <label class="form-check-label" for="${elemento}">${elemento}</label>
+</div>`
+})
+contenedorChecks.innerHTML = checks
+}
+
+
 
 let upcomingFilter = data.events.filter (events => data.currentDate < events.date)
 console.log(upcomingFilter)
