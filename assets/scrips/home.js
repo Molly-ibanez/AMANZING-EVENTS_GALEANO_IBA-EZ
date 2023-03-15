@@ -1,5 +1,7 @@
-/*console.log("Current Date: ",data.currentDate)
+console.log("Current Date: ",data.currentDate)
 
+console.log([document])
+/*
 let allData = []
 
 
@@ -21,7 +23,7 @@ const containerCards = document.getElementById('elements')
 showCards(data.events,containerCards)
 
 function showCards(arrayDatos,container){
-  let cards = ""
+  let cards = []
 
   for(fact of arrayDatos){
 
@@ -31,7 +33,7 @@ function showCards(arrayDatos,container){
       <h5 class="card-title">${fact.name}</h5>
       <p class="card-text">${fact.description}</p>
       <p class="card-text">$${fact.price}</p>
-      <a href="./details.html" class="btn btn-primary">Details</a>
+      <a href="./details.html?id=${fact.id}">Details</a>
     </div>
   </div>`
   }
