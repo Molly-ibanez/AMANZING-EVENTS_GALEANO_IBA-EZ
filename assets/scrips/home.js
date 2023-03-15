@@ -1,19 +1,7 @@
 console.log("Current Date: ",data.currentDate)
 
 console.log([document])
-/*
-let allData = []
 
-
-for(let i=0; i< data.events.length; i++){
-     data.currentDate > data.events[i].date
-        allData.push(data.events[i])
-    
-}
-
-console.log("All Data: ",allData)
-
-*/
 
 
 const containerCards = document.getElementById('elements')
@@ -33,7 +21,7 @@ function showCards(arrayDatos,container){
       <h5 class="card-title">${fact.name}</h5>
       <p class="card-text">${fact.description}</p>
       <p class="card-text">$${fact.price}</p>
-      <a href="./details.html?id=${fact.id}">Details</a>
+      <a href="./details.html?id=${fact._id}">Details</a>
     </div>
   </div>`
   }
@@ -44,3 +32,16 @@ function showCards(arrayDatos,container){
 
 
 
+/*
+let allData = []
+
+
+for(let i=0; i< data.events.length; i++){
+     data.currentDate > data.events[i].date
+        allData.push(data.events[i])
+    
+}
+
+console.log("All Data: ",allData)
+
+*/

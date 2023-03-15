@@ -1,8 +1,6 @@
 console.log("Current Date: ",data.currentDate)
 
 
-
-
 let upcomingFilter = data.events.filter (events => data.currentDate < events.date)
 console.log(upcomingFilter)
 
@@ -18,7 +16,7 @@ containerCards.innerHTML = upcomingFilter
         <h5 class="card-title">${data.name}</h5>
         <p class="card-text">${data.description}</p>
         <p class="card-text">$${data.price}</p>
-        <a href="./details.html" class="btn btn-primary">Details</a>
+        <a href="./details.html?id=${data._id}" class="btn btn-primary">Details</a>
       </div>
     </div>`
 )
