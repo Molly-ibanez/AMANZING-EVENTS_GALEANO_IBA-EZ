@@ -13,8 +13,12 @@ const containerCards = document.getElementById("containerCards")
 
 containerCards.innerHTML = ` 
 
-    <div class="cardDetail" >
-        <img src="${selectionEvent.image}" class="card-img-top" alt="">
+    <div class="card mb-3"  >
+    <div class="row g-0">
+    <div class="col-md-4">
+        <img src="${selectionEvent.image}" class="img-fluid rounded-start" alt="...">
+        </div>   
+         <div class="col-md-8">
             <div class="card-body">
                 <p class="card-text">Name: ${selectionEvent.name}</p>
                 <p class="card-text">Description: ${selectionEvent.description}</p>
@@ -22,6 +26,9 @@ containerCards.innerHTML = `
                 <p class="card-text">Date: ${selectionEvent.date}</p>
                 <p class="card-text">Price: ${selectionEvent.price}</p>
     </div>
+    </div>
+    </div>
+  </div>
 
 `
 
