@@ -1,10 +1,14 @@
 console.log("Current Date: ",data.currentDate)
 
 const contenedorChecks = document.getElementById('checkContainer')
+const containerCards = document.getElementById('elements')
 
 
+//LLAMADA FUNCIONES
 crearCheckboxes(data.events)
 
+
+//FUNCIONES
 function crearCheckboxes(arrayInfo){
   let checks = ''
   let checkboxCategory = data.events.map (events => events.category)
@@ -38,7 +42,6 @@ console.log(upcomingFilter)
 
 
 
-const containerCards = document.getElementById('elements')
 containerCards.innerHTML = upcomingFilter
 
 
@@ -54,6 +57,12 @@ containerCards.innerHTML = upcomingFilter
 )
 .join(" ")
 
+
+
+
+
+
+//CODIGO VIEJO
 /*
 let upcomingData=[]
 
