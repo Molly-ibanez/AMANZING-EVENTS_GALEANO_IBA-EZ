@@ -1,5 +1,7 @@
 console.log("Current Date: ",data.currentDate)
 
+
+//Constantes capturadas en variables
 const contenedorChecks = document.getElementById('checkContainer')
 const containerCards = document.getElementById('elements')
 const input = document.querySelector('input')
@@ -88,7 +90,7 @@ contenedorChecks.innerHTML = checks
 
 function showCards(arrayDatos){
   let cards = ""
-  let pastFilter = data.events.filter (events => data.currentDate > events.date)
+  let pastFilter = arrayDatos.filter (events => data.currentDate > events.date)
   console.log(pastFilter)
 
   

@@ -1,5 +1,7 @@
 console.log("Current Date: ",data.currentDate)
 
+
+//Constantes capturadas en variables
 const contenedorChecks = document.getElementById('checkContainer')
 const containerCards = document.getElementById('elements')
 const input = document.querySelector('input')
@@ -7,7 +9,16 @@ const input = document.querySelector('input')
 
 
 input.addEventListener('input', ()=>{
-  console.log("escribiendo")
+  let arrayFiltrado = filtrarPorTexto(data.events, input.value)
+  console.log(arrayFiltrado)
+  showCards(arrayFiltrado)
+})
+
+
+contenedorChecks.addEventListener('change',
+()=>{
+  let arrayFiltrado2 = filtrarPorCategoria(data.events)
+  showCards(arrayFiltrado2)
 })
 
 
@@ -17,7 +28,29 @@ showCards(data.events,containerCards)
 
 
 //FUNCIONES
+function filtrarPorTexto(arrayDatos, texto){
+  let arrayFiltrado = arrayDatos.filter(elemento => elemento.name.toLowerCase().includes(texto.toLowerCase()))
+return arrayFiltrado
+}
 
+function filtrarPorCategoria(arrayInfo){
+  let checkboxes = document.querySelectorAll("input[type='checkbox']")
+  //console.log(checkboxes);
+  let arrayChecks = Array.from(checkboxes)
+  //console.log(arrayChecks);
+  let checksChecked = arrayChecks.filter(check => check.checked)
+  //console.log(checksChecked);
+  if(checksChecked.length == 0){
+    return arrayInfo
+}
+
+
+  let checkValues = checksChecked.map(check => check.value)
+    //console.log(checkValues);
+    let arrayFiltrado2 = arrayInfo.filter(elemento => checkValues.includes(elemento.category))
+    console.log(arrayFiltrado2);
+    return arrayFiltrado2
+}
 
 function crearCheckboxes(arrayInfo){
   let checks = ''
@@ -47,15 +80,15 @@ contenedorChecks.innerHTML = checks
 
 function showCards(arrayDatos){
   let cards = ""
-  let upcomingFilter = data.events.filter (events => data.currentDate < events.date)
+  let upcomingFilter = arrayDatos.filter (events => data.currentDate < events.date)
   //console.log(pastFilter)
 
   
- /* if(arrayDatos.length == 0){
+  if(arrayDatos.length == 0){
     containerCards.innerHTML = "<h5 class='display-1 fw-bolder'>No hay coincidencias en su busqueda</h5>"
     return
 }
-*/
+
 
 upcomingFilter.forEach(elemento=> {
 
