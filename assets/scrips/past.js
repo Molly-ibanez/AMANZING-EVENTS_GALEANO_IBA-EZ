@@ -8,18 +8,17 @@ const input = document.querySelector('input')
 
 
 
-input.addEventListener('input', ()=>{
+input.addEventListener('input',superFiltro
+/*()=>{
   let arrayFiltrado = filtrarPorTexto(data.events, input.value)
-  console.log(arrayFiltrado)
   showCards(arrayFiltrado)
-})
+}*/)
 
-
-contenedorChecks.addEventListener('change',
-()=>{
+contenedorChecks.addEventListener('change',superFiltro
+/*()=>{
   let arrayFiltrado2 = filtrarPorCategoria(data.events)
   showCards(arrayFiltrado2)
-})
+}*/)
 
 
 
@@ -32,6 +31,11 @@ showCards(data.events,containerCards)
 //FUNCIONES
 
 
+function superFiltro(){
+  let arrayFiltrado1 = filtrarPorTexto(data.events, input.value)
+  let arrayFiltrado2 = filtrarPorCategoria(arrayFiltrado1)
+  showCards(arrayFiltrado2)
+}
 
 
 
