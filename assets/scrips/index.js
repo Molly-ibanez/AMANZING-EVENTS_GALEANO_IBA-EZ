@@ -1,6 +1,25 @@
 console.log("Current Date: ",data.currentDate)
 console.log([document])
 
+let tarjetas;
+const obtenerTarjetas = async () =>{
+    try{
+        const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
+        
+        tarjetas = await respuesta.json()
+        console.log(tarjetas.events);
+        showCards(tarjetas.events,containerCards)
+        crearCheckboxes(tarjetas.events)
+
+    }
+    catch(error){
+        console.log(error);
+        alert('Error')
+    }
+}
+obtenerTarjetas()
+
+
 
 //Constantes capturadas en variables
 const contenedorChecks = document.getElementById('checkContainer')
@@ -24,15 +43,15 @@ contenedorChecks.addEventListener('change',superFiltro
 
 // Llamadas de funciones
 
-crearCheckboxes(data.events)
-showCards(data.events,containerCards)
+//crearCheckboxes(data.events)
+//showCards(data.events,containerCards)
 
 
 // Funciones
 
 
 function superFiltro(){
-  let arrayFiltrado1 = filtrarPorTexto(data.events, input.value)
+  let arrayFiltrado1 = filtrarPorTexto(tarjetas.events, input.value)
   let arrayFiltrado2 = filtrarPorCategoria(arrayFiltrado1)
   showCards(arrayFiltrado2)
 }
@@ -100,30 +119,44 @@ contenedorChecks.innerHTML = checks
 
 
 
+/*
+let tarjetas
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+.then((res)=>res.json())
+.then((datos)=>{
+    console.log(datos)
+    tarjetas = datos.events
+    showCards(tarjetas)
+})
+.catch((error)=> console.log(error))
+*/
+
+
 function showCards(arrayDatos){
-  if(arrayDatos.length == 0){
+/*  if(arrayDatos.length == 0){
     containerCards.innerHTML = "<h5 class='display-1 fw-bolder'>No hay coincidencias en su busqueda</h5>"
     return
 }
+*/
 
-  let cards = []
+let cards = []
 
-  arrayDatos.forEach(elemento => {
+arrayDatos.forEach(elemento => {
 
-    cards +=  `<div class="bg-danger row row-cols-1 row-cols-md-3 g-3 p-4 justify-content-around">
-    <div class="card h-100" style="width: 20rem;">
-    <img src="${elemento.image}" class="card-img-top"  alt="...">
-    <div class="card-body">
-      <h5 class="card-title">${elemento.name}</h5>
-      <p class="card-text">${elemento.description}</p>
-      <p class="card-text">$${elemento.price}</p>
-      <div class="card-footer">
-      <a href="./details.html?id=${elemento._id}">Details</a>
-    </div>
-    </div>
-    </div>
-  </div>`
-  })
+  cards +=  `<div class="bg-danger row row-cols-1 row-cols-md-3 g-3 p-4 justify-content-around">
+  <div class="card h-100" style="width: 20rem;">
+  <img src="${elemento.image}" class="card-img-top"  alt="...">
+  <div class="card-body">
+    <h5 class="card-title">${elemento.name}</h5>
+    <p class="card-text">${elemento.description}</p>
+    <p class="card-text">$${elemento.price}</p>
+    <div class="card-footer">
+    <a href="./details.html?id=${elemento._id}">Details</a>
+  </div>
+  </div>
+  </div>
+</div>`
+})
   
   containerCards.innerHTML = cards
   
