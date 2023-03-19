@@ -1,4 +1,3 @@
-console.log("Current Date: ",data.currentDate)
 console.log([document])
 
 let tarjetas;
@@ -8,8 +7,10 @@ const obtenerTarjetas = async () =>{
         
         tarjetas = await respuesta.json()
         console.log(tarjetas.events);
+
         showCards(tarjetas.events,containerCards)
         crearCheckboxes(tarjetas.events)
+
 
     }
     catch(error){
@@ -119,25 +120,12 @@ contenedorChecks.innerHTML = checks
 
 
 
-/*
-let tarjetas
-fetch('https://mindhub-xj03.onrender.com/api/amazing')
-.then((res)=>res.json())
-.then((datos)=>{
-    console.log(datos)
-    tarjetas = datos.events
-    showCards(tarjetas)
-})
-.catch((error)=> console.log(error))
-*/
-
-
 function showCards(arrayDatos){
-/*  if(arrayDatos.length == 0){
+  if(arrayDatos.length == 0){
     containerCards.innerHTML = "<h5 class='display-1 fw-bolder'>No hay coincidencias en su busqueda</h5>"
     return
 }
-*/
+
 
 let cards = []
 
@@ -149,8 +137,8 @@ arrayDatos.forEach(elemento => {
   <div class="card-body">
     <h5 class="card-title">${elemento.name}</h5>
     <p class="card-text">${elemento.description}</p>
-    <p class="card-text">$${elemento.price}</p>
-    <div class="card-footer">
+    <div class="card-footer d-flex justify-content-around">
+    <p class="card-text d-flex">$${elemento.price}</p>
     <a href="./details.html?id=${elemento._id}">Details</a>
   </div>
   </div>
@@ -166,6 +154,21 @@ arrayDatos.forEach(elemento => {
 
 
 //CODIGO VIEJO
+
+/*
+let tarjetas
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+.then((res)=>res.json())
+.then((datos)=>{
+    console.log(datos)
+    tarjetas = datos.events
+    showCards(tarjetas)
+})
+.catch((error)=> console.log(error))
+*/
+
+
+
 /*
 let allData = []
 

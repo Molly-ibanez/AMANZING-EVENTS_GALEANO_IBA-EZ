@@ -1,4 +1,26 @@
-console.log("Current Date: ",data.currentDate)
+
+let tarjetas;
+const obtenerTarjetas = async () =>{
+    try{
+        const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
+        
+       /* if (respuesta.status!=200){
+          respuesta = await fetch('./assets/scrips/amazing.json')
+        }*/
+        tarjetas = await respuesta.json()
+
+        //console.log(tarjetas.events);
+        showCards(tarjetas.events,containerCards)
+        crearCheckboxes(tarjetas.events)
+
+    }
+    catch(error){
+        console.log(error);
+        alert('Error')
+    }
+}
+obtenerTarjetas()
+
 
 
 //Constantes capturadas en variables
@@ -23,8 +45,8 @@ contenedorChecks.addEventListener('change',superFiltro
 
 
 //LLAMADA FUNCIONES
-crearCheckboxes(data.events)
-showCards(data.events,containerCards)
+//crearCheckboxes(data.events)
+//showCards(data.events,containerCards)
 
 
 
@@ -32,13 +54,10 @@ showCards(data.events,containerCards)
 
 
 function superFiltro(){
-  let arrayFiltrado1 = filtrarPorTexto(data.events, input.value)
+  let arrayFiltrado1 = filtrarPorTexto(tarjetas.events, input.value)
   let arrayFiltrado2 = filtrarPorCategoria(arrayFiltrado1)
   showCards(arrayFiltrado2)
 }
-
-
-
 
 function filtrarPorTexto(arrayDatos, texto){
   let arrayFiltrado = arrayDatos.filter(elemento => elemento.name.toLowerCase().includes(texto.toLowerCase()))
@@ -61,13 +80,13 @@ function filtrarPorCategoria(arrayInfo){
   let checkValues = checksChecked.map(check => check.value)
     //console.log(checkValues);
     let arrayFiltrado2 = arrayInfo.filter(elemento => checkValues.includes(elemento.category))
-    console.log(arrayFiltrado2);
+    //console.log(arrayFiltrado2);
     return arrayFiltrado2
 }
 
 function crearCheckboxes(arrayInfo){
   let checks = ''
-  let checkboxCategory = data.events.map (events => events.category)
+  let checkboxCategory = tarjetas.events.map (events => events.category)
 //console.log (checkboxCategory)
 
   let checkboxCategorySinRepetir = new Set(checkboxCategory.sort((a,b)=>{
@@ -94,8 +113,8 @@ contenedorChecks.innerHTML = checks
 
 function showCards(arrayDatos){
   let cards = ""
-  let pastFilter = arrayDatos.filter (events => data.currentDate > events.date)
-  console.log(pastFilter)
+  let pastFilter = arrayDatos.filter (events => tarjetas.currentDate > events.date)
+  //console.log(pastFilter)
 
   
   if(arrayDatos.length == 0){
@@ -112,10 +131,10 @@ pastFilter.forEach(elemento=> {
     <div class="card-body">
       <h5 class="card-title">${elemento.name}</h5>
       <p class="card-text">${elemento.description}</p>
-      <p class="card-text">$${elemento.price}</p>
-      <div class="card-footer">
+      <div class="card-footer d-flex justify-content-around">
+      <p class="card-text d-flex">$${elemento.price}</p>
       <a href="./details.html?id=${elemento._id}">Details</a>
-    </div>
+      </div>
     </div>
     </div>
   </div>`
