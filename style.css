@@ -32,6 +32,13 @@ main img{
 }
 
 
+
+.card-footer{
+    height: 5vh;
+    display: align-content-end
+}
+
+
 /* TABLE */
 
 table {
@@ -51,6 +58,9 @@ th {
     padding-bottom: 5px;
     padding-top: 5px;
 }
+
+
+
 
 td{
     background-color: white;

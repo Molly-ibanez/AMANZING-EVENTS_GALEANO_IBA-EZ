@@ -1,19 +1,22 @@
 
 let tarjetas;
 const obtenerTarjetas = async () =>{
-    try{
-        const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
-        
-        tarjetas = await respuesta.json()
-        //console.log(tarjetas.events);
-        showCards(tarjetas.events,containerCards)
-        crearCheckboxes(tarjetas.events)
+  try{
+      const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
+      tarjetas = await respuesta.json()
 
+      console.log(tarjetas.events);
+      showCards(tarjetas.events,containerCards)
+      crearCheckboxes(tarjetas.events)
+
+  }
+  catch(error){
+     if (error){
+      respuesta = await fetch('./assets/scrips/amazing.json')
+      tarjetas = await respuesta.json()
     }
-    catch(error){
-        console.log(error);
-        alert('Error')
-    }
+      console.log(error);
+  }
 }
 obtenerTarjetas()
 
@@ -110,7 +113,7 @@ function showCards(arrayDatos){
 
   
   if(arrayDatos.length == 0){
-    containerCards.innerHTML = "<h5 class='display-1 fw-bolder'>No hay coincidencias en su busqueda</h5>"
+    containerCards.innerHTML = "<h5 class='display-1 fw-bolder'>There are no matches in your search.</h5>"
     return
 }
 
