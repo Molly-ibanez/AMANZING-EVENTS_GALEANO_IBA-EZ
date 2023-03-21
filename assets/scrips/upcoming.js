@@ -1,25 +1,25 @@
 
 let tarjetas;
-const obtenerTarjetas = async () =>{
-  try{
-      const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
+const obtenerTarjetas = async () => {
+  try {
+    const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
+    if (respuesta.status === 200) {
       tarjetas = await respuesta.json()
+  
+    showCards(tarjetas.events, containerCards)
+    crearCheckboxes(tarjetas.events)
 
-      console.log(tarjetas.events);
-      showCards(tarjetas.events,containerCards)
-      crearCheckboxes(tarjetas.events)
 
-  }
-  catch(error){
-     if (error){
+      }  else if (respuesta.status === 404) {
       respuesta = await fetch('./assets/scrips/amazing.json')
       tarjetas = await respuesta.json()
-    }
-      console.log(error);
+  }
+
+}  catch (error) {
+    console.log(error);
   }
 }
 obtenerTarjetas()
-
 
 
 //Constantes capturadas en variables
@@ -120,7 +120,7 @@ function showCards(arrayDatos){
 
 upcomingFilter.forEach(elemento=> {
 
-    cards +=  `<div class="bg-danger row row-cols-1 row-cols-md-3 g-3 p-4 justify-content-around">
+    cards +=  `<div class="card-bordered shadow row row-cols-1 row-cols-md-3 m-2 g-3 p-4 justify-content-around">
     <div class="card h-100" style="width: 20rem;">
     <img src="${elemento.image}" class="card-img-top"  alt="...">
     <div class="card-body">
@@ -142,36 +142,4 @@ upcomingFilter.forEach(elemento=> {
 
 
 
-
-
-
-//CODIGO VIEJO
-/*
-let upcomingData=[]
-
-
-
-showCards(data.events,containerCards)
-
-function showCards(array,container) {
-  let upcomingData=[]
-  for (let i=0; i< data.events.length; i++) {
-
-    if (data.currentDate < data.events[i].date){
-      upcomingData +=  `<div class="card" style="width: 20rem;">
-      <img src="${data.events[i].image}" class="card-img-top"  alt="...">
-      <div class="card-body">
-        <h5 class="card-title">${data.events[i].name}</h5>
-        <p class="card-text">${data.events[i].description}</p>
-        <p class="card-text">$${data.events[i].price}</p>
-        <a href="./details.html" class="btn btn-primary">Details</a>
-      </div>
-    </div>`
-    }
-    
-
-  }
-}
-
-*/
 

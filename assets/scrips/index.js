@@ -4,18 +4,19 @@ let tarjetas;
 const obtenerTarjetas = async () => {
   try {
     const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
-    tarjetas = await respuesta.json()
-
-    //console.log(tarjetas.events);
+    if (respuesta.status === 200) {
+      tarjetas = await respuesta.json()
+  
     showCards(tarjetas.events, containerCards)
     crearCheckboxes(tarjetas.events)
 
-  }
-  catch (error) {
-    if (error) {
+
+      }  else if (respuesta.status === 404) {
       respuesta = await fetch('./assets/scrips/amazing.json')
       tarjetas = await respuesta.json()
-    }
+  }
+
+}  catch (error) {
     console.log(error);
   }
 }
@@ -107,7 +108,7 @@ function crearCheckboxes(arrayInfo) {
   checkboxCategorySinRepetir.forEach(elemento => {
 
     checks += ` 
-   <div class="p-1 d-flex justify-content-between">
+   <div class="bordered p-1 d-flex justify-content-between">
   <div class="form-check">
   <input class="form-check-input" type="checkbox"  id="${elemento}" value="${elemento}">
   <label class="form-check-label" for="${elemento}">${elemento}</label>
@@ -132,7 +133,7 @@ function showCards(arrayDatos) {
 
   arrayDatos.forEach(elemento => {
 
-    cards += `<div class="bg-danger row row-cols-1 row-cols-md-3 g-3 p-4 justify-content-around">
+    cards += `<div class="card-bordered shadow row row-cols-1 row-cols-md-3 m-2 g-3 p-4 justify-content-around">
   <div class="card h-100" style="width: 20rem;">
   <img src="${elemento.image}" class="card-img-top"  alt="...">
   <div class="card-body">
@@ -154,32 +155,3 @@ function showCards(arrayDatos) {
 
 
 
-//CODIGO VIEJO
-
-/*
-let tarjetas
-fetch('https://mindhub-xj03.onrender.com/api/amazing')
-.then((res)=>res.json())
-.then((datos)=>{
-    console.log(datos)
-    tarjetas = datos.events
-    showCards(tarjetas)
-})
-.catch((error)=> console.log(error))
-*/
-
-
-
-/*
-let allData = []
-
-
-for(let i=0; i< data.events.length; i++){
-     data.currentDate > data.events[i].date
-        allData.push(data.events[i])
-    
-}
-
-console.log("All Data: ",allData)
-
-*/

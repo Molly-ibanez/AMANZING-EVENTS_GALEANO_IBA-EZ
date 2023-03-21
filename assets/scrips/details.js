@@ -2,6 +2,7 @@ let tarjetas;
 const obtenerTarjetas = async () => {
   try {
     const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
+    if (respuesta.status === 200) {
     tarjetas = await respuesta.json()
 
     const selectionEvent = tarjetas.events.find(events => events._id == id)
@@ -11,10 +12,10 @@ const obtenerTarjetas = async () => {
 
     containerCards.innerHTML = ` 
 
-         <div class="card mb-3" >
+         <div class="card mb-3"  >
          <div class="row g-0">
          <div class="col-md-4">
-         <img src="${selectionEvent.image}" class="img-fluid rounded-start"   alt="...">
+         <img src="${selectionEvent.image}" class="img-fluid rounded-start d-block h-100"   alt="...">
          </div>   
           <div class="col-md-8">
             <div class="card-body">
@@ -28,13 +29,13 @@ const obtenerTarjetas = async () => {
             </div>
             </div>
             `
-
+          } else if (respuesta.status === 404) {
+            respuesta = await fetch('./assets/scrips/amazing.json')
+            tarjetas = await respuesta.json()
   }
+}
   catch (error) {
-    if (error) {
-      respuesta = await fetch('./assets/scrips/amazing.json')
-      tarjetas = await respuesta.json()
-    }
+ 
     console.log(error);
   }
 }

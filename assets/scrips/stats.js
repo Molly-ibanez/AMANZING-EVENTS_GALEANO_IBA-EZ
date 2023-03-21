@@ -2,25 +2,39 @@ let cards;
 const obtenerTarjetas = async () => {
     try {
         const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
-        cards = await respuesta.json()
 
-        //console.log(cards.events);
-        let pastFilter = cards.events.filter(events => cards.currentDate > events.date)
-        highestAttendance(pastFilter, table1)
-        lowestAttendance(pastFilter, table2)
-        maxCapacity(pastFilter, table3)
-        let upcomingFilter = cards.events.filter(events => cards.currentDate < events.date)
-        categoryUpcoming(upcomingFilter, table4)
-        categoryPast(pastFilter, table5)
+        if (respuesta.status === 200) {
+            cards = await respuesta.json()
+
+            let pastFilter = cards.events.filter(events => cards.currentDate > events.date)
+            let upcomingFilter = cards.events.filter(events => cards.currentDate < events.date)
+
+            highestAttendance(pastFilter, table1)
+            lowestAttendance(pastFilter, table2)
+            maxCapacity(pastFilter, table3)
+            categoryUpcoming(upcomingFilter, table4)
+            categoryPast(pastFilter, table5)
+
+        } else if (respuesta.status === 404) {
+            const respuesta = await fetch('./assets/scrips/amazing.json')
+            cards = await respuesta.json()
+            let pastFilter = cards.events.filter(events => cards.currentDate > events.date)
+            let upcomingFilter = cards.events.filter(events => cards.currentDate < events.date)
+
+            highestAttendance(pastFilter, table1)
+            lowestAttendance(pastFilter, table2)
+            maxCapacity(pastFilter, table3)
+            categoryUpcoming(upcomingFilter, table4)
+            categoryPast(pastFilter, table5)
+        }
+
+
 
     }
     catch (error) {
-        if (error) {
-          respuesta = await fetch('./assets/scrips/amazing.json')
-          tarjetas = await respuesta.json()
-        }
+
         console.log(error);
-      }
+    }
 }
 obtenerTarjetas()
 
@@ -175,12 +189,13 @@ function categoryUpcoming(arrayDatos, container) {
         obj.assistance = result.toFixed(2)
         console.log(obj)
 
-        statisticsUpcomig +=`  
-      <tr class="d-flex">
-        <td >${obj.name}</td>
-        <td >${obj.revenue}</td>
-        <td >${obj.assistance}%</td>
-      </tr>`
+        statisticsUpcomig += `  
+        <tr >
+        <th >${obj.name}</th>
+        <th >$${obj.revenue}</th>
+        <th >${obj.assistance}%</th>
+      </tr>
+        `
     })
 
 
@@ -233,21 +248,18 @@ function categoryPast(arrayDatos, container) {
         obj.assistance = result.toFixed(2)
         console.log(obj)
 
-        statistics +=`  
+        statistics += `  
         <tr >
-          <td >${obj.name}</td>
-          <td >${obj.revenue}</td>
-          <td >${obj.assistance}%</td>
-          
-        </tr>
+        <th >${obj.name}</th>
+        <th >$${obj.revenue}</th>
+        <th >${obj.assistance}%</th>
+      </tr>
         `
     })
 
-
     table5.innerHTML = statistics
+
 }
-
-
 
 
 

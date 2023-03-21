@@ -3,18 +3,19 @@ let tarjetas;
 const obtenerTarjetas = async () => {
   try {
     const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
-    tarjetas = await respuesta.json()
-
-    //console.log(tarjetas.events);
+    if (respuesta.status === 200) {
+      tarjetas = await respuesta.json()
+  
     showCards(tarjetas.events, containerCards)
     crearCheckboxes(tarjetas.events)
 
-  }
-  catch (error) {
-    if (error) {
+
+      }  else if (respuesta.status === 404) {
       respuesta = await fetch('./assets/scrips/amazing.json')
       tarjetas = await respuesta.json()
-    }
+  }
+
+}  catch (error) {
     console.log(error);
   }
 }
@@ -124,7 +125,7 @@ function showCards(arrayDatos) {
 
   pastFilter.forEach(elemento => {
 
-    cards += `<div class="bg-danger row row-cols-1 row-cols-md-3 g-3 p-4 justify-content-around">
+    cards += `<div class="card-bordered shadow row row-cols-1 row-cols-md-3 m-2 g-3 p-4 justify-content-around">
     <div class="card h-100" style="width: 20rem;">
     <img src="${elemento.image}" class="card-img-top"  alt="...">
     <div class="card-body">
@@ -145,76 +146,6 @@ function showCards(arrayDatos) {
 
 
 
-
-
-
-
-
-
-//CODIGO VIEJO
-
-/*
-let pastFilter = data.events.filter (events => data.currentDate > events.date)
-//console.log(pastFilter)
-
-containerCards.innerHTML = pastFilter
-
-.map (data =>   `<div class="card mb-3" style="width: 20rem;">
-      <img src="${data.image}" class="card-img-top"  alt="...">
-      <div class="card-body">
-        <h5 class="card-title">${data.name}</h5>
-        <p class="card-text">${data.description}</p>
-        <p class="card-text">$${data.price}</p>
-        <div class="card-footer">
-        <a href="./details.html?id=${data._id}" class="btn btn-primary">Details</a>
-        </div>
-      </div>
-      </div>`
-)
-
-
-const containerCards = document.getElementById('elements')
-*/
-
-
-/*
-for(let i=0; i< data.events.length; i++){
-    if (data.currentDate < data.events[i].date){
-        pastData.push(data.events[i])
-    }
-}
-console.log("Past Data: ",pastData)
-*/
-
-
-/*
-let pastData = []
-
-const containerCards = document.getElementById('elements')
-
-showCards(data.events,containerCards)
-
-function showCards(array,containerCards) {
-  let pastData=[]
-  for (let i=0; i< data.events.length; i++) {
-
-    if (data.currentDate > data.events[i].date){
-        pastData +=   `<div class="card" style="width: 20rem;">
-      <img src="${data.events[i].image}" class="card-img-top"  alt="...">
-      <div class="card-body">
-        <h5 class="card-title">${data.events[i].name}</h5>
-        <p class="card-text">${data.events[i].description}</p>
-        <p class="card-text">$${data.events[i].price}</p>
-        <a href="./details.html" class="btn btn-primary">Details</a>
-      </div>
-    </div>`
-    }
-    containerCards.innerHTML = pastData
-
-  }
-}
-
-*/
 
 
 

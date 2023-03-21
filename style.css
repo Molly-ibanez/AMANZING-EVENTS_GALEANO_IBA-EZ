@@ -41,6 +41,7 @@ main img{
 
 /* TABLE */
 
+
 table {
     height: 60vh;
     width: 80rem;
@@ -67,5 +68,10 @@ td{
 }
 
 
-/* FOOTER */
+/* DETAILS */
+
+#img{
+
+height: 30vh;
+}
 
