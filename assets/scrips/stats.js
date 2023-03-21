@@ -41,11 +41,11 @@ obtenerTarjetas()
 
 //Constantes capturadas en variables
 
-const table1 = document.getElementById("table 1")
-const table2 = document.getElementById("table 2")
-const table3 = document.getElementById("table 3")
-const table4 = document.getElementById("table 4")
-const table5 = document.getElementById("table 5")
+const table1 = document.getElementById("table1")
+const table2 = document.getElementById("table2")
+const table3 = document.getElementById("table3")
+const table4 = document.getElementById("table4")
+const table5 = document.getElementById("table5")
 
 
 //FUNCIONES
