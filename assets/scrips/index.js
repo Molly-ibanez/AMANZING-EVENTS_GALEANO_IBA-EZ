@@ -120,8 +120,6 @@ function crearCheckboxes(arrayInfo) {
 }
 
 
-
-
 function showCards(arrayDatos) {
   if (arrayDatos.length == 0) {
     containerCards.innerHTML = "<h5 class='display-1 fw-bolder'>There are no matches in your search.</h5>"
@@ -134,18 +132,18 @@ function showCards(arrayDatos) {
   arrayDatos.forEach(elemento => {
 
     cards += `<div class="card-bordered shadow row row-cols-1 row-cols-md-3 m-2 g-3 p-4 justify-content-around">
-  <div class="card h-100" style="width: 20rem;">
-  <img src="${elemento.image}" class="card-img-top"  alt="...">
-  <div class="card-body">
-    <h5 class="card-title">${elemento.name}</h5>
-    <p class="card-text">${elemento.description}</p>
-    <div class="card-footer d-flex justify-content-around">
-    <p class="card-text d-flex">$${elemento.price}</p>
-    <a href="./details.html?id=${elemento._id}">Details</a>
-  </div>
-  </div>
-  </div>
-</div>`
+    <div class="card h-100" style="width: 20rem;">
+    <img src="${elemento.image}" class="card-img-top"  alt="...">
+    <div class="card-body">
+      <h5 class="card-title">${elemento.name}</h5>
+      <p class="card-text">${elemento.description}</p>
+      <div class="card-footer d-flex justify-content-around">
+      <p class="card-text d-flex">$${elemento.price}</p>
+      <a href="./details.html?id=${elemento._id}">Details</a>
+    </div>
+    </div>
+    </div>
+  </div>`
   })
 
   containerCards.innerHTML = cards

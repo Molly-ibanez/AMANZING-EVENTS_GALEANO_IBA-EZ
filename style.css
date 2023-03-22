@@ -33,40 +33,6 @@ main img{
 
 
 
-.card-footer{
-    height: 5vh;
-}
-
-
-/* TABLE */
-
-
-table {
-    height: 60vh;
-    width: 80rem;
-}
-
-table, th, td {
-    border: 2px solid;
-    text-align:start;
-    }
-
-
-th {
-    background-color: rgb(202, 50, 149);
-    color: rgb(12, 11, 12);
-    padding-bottom: 5px;
-    padding-top: 5px;
-}
-
-
-
-
-td{
-    background-color: white;
-}
-
-
 /* DETAILS */
 
 #img{

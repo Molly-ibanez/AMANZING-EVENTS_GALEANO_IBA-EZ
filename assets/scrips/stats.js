@@ -81,6 +81,7 @@ function highestAttendance(arrayDatos, container) {
     })
 
     table1.innerHTML = obj.name + ":  (" + obj.assistance + " %) "
+    
 
 }
 

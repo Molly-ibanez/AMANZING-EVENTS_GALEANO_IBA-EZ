@@ -12,22 +12,23 @@ const obtenerTarjetas = async () => {
 
     containerCards.innerHTML = ` 
 
-         <div class="card mb-3"  >
-         <div class="row g-0">
-         <div class="col-md-4">
-         <img src="${selectionEvent.image}" class="img-fluid rounded-start d-block h-100"   alt="...">
-         </div>   
-          <div class="col-md-8">
-            <div class="card-body">
-                <p class="card-text">Name: ${selectionEvent.name}</p>
-                <p class="card-text">Description: ${selectionEvent.description}</p>
-                <p class="card-text">Place: ${selectionEvent.place}</p>
-                <p class="card-text">Date: ${selectionEvent.date}</p>
-                <p class="card-text">Price: ${selectionEvent.price}</p>
-            </div>
-            </div>
-            </div>
-            </div>
+    <div class="card mb-3 bordered shadow">
+    <div class="row g-0">
+    <div class="col-md-4">
+    <img src="${selectionEvent.image}" class="img-fluid rounded-start d-block h-100 ratio" style="--bs-aspect-ratio: 50%;""   alt="...">
+    </div>   
+     <div class="col-md-8">
+       <div class="card-body">
+           <p class="card-text">Name: ${selectionEvent.name}</p>
+           <p class="card-text">Description: ${selectionEvent.description}</p>
+           <p class="card-text">Place: ${selectionEvent.place}</p>
+           <p class="card-text">Date: ${selectionEvent.date}</p>
+           <p class="card-text">Price: ${selectionEvent.price}</p>
+       </div>
+       </div>
+       </div>
+       </div>
+       
             `
           } else if (respuesta.status === 404) {
             respuesta = await fetch('./assets/scrips/amazing.json')
