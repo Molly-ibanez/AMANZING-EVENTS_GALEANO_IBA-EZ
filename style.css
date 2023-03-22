@@ -36,7 +36,12 @@ main img{
 /* DETAILS */
 
 #img{
-
 height: 30vh;
 }
 
+/* FOOTER */
+
+.card-footer{
+    align-content: baseline;
+    justify-content: center;
+}

@@ -54,13 +54,13 @@ const table5 = document.getElementById("table5")
 function highestAttendance(arrayDatos, container) {
     let attendance = arrayDatos.map(events => (events.assistance * 100 / events.capacity))
 
-    console.log(attendance)
+    //console.log(attendance)
 
     let max = attendance.reduce(function (a, b) {
         return Math.max(a, b);
     }, -Infinity);
 
-    console.log(max)
+    //console.log(max)
 
     let obj = {
         name: "",
@@ -75,7 +75,7 @@ function highestAttendance(arrayDatos, container) {
         if (aux >= max) {
             obj.name = element.name
             obj.assistance = ((element.assistance * 100) / element.capacity).toFixed(2)
-            console.log(obj.assistance)
+            //console.log(obj.assistance)
         }
         return obj
     })
@@ -89,13 +89,13 @@ function highestAttendance(arrayDatos, container) {
 function lowestAttendance(arrayDatos, container) {
     let attendance = arrayDatos.map(events => (events.assistance * 100 / events.capacity))
 
-    console.log(attendance)
+    //console.log(attendance)
 
     let min = attendance.reduce(function (a, b) {
         return Math.min(a, b);
     }, +Infinity);
 
-    console.log(min)
+    //console.log(min)
 
     let obj = {
         name: "",
@@ -107,7 +107,7 @@ function lowestAttendance(arrayDatos, container) {
         if (aux <= min) {
             obj.name = element.name
             obj.assistance = ((element.assistance * 100) / element.capacity).toFixed(2)
-            console.log(obj.assistance)
+            //console.log(obj.assistance)
         }
         return obj
     })
@@ -119,13 +119,13 @@ function lowestAttendance(arrayDatos, container) {
 function maxCapacity(arrayDatos, container) {
     let capacity = arrayDatos.map(events => events.capacity)
 
-    console.log(capacity)
+    //console.log(capacity)
 
     let max = capacity.reduce(function (a, b) {
         return Math.max(a, b);
     }, -Infinity);
 
-    console.log(max)
+    //console.log(max)
 
     let obj = {
         name: "",
@@ -136,7 +136,7 @@ function maxCapacity(arrayDatos, container) {
         if (element.capacity >= max) {
             obj.name = element.name
             obj.capacity = element.capacity
-            console.log(obj.capacity)
+            //console.log(obj.capacity)
         }
         return obj
     })
@@ -148,7 +148,7 @@ function maxCapacity(arrayDatos, container) {
 function categoryUpcoming(arrayDatos, container) {
     let statisticsUpcomig = []
     let category = arrayDatos.map(events => events.category)
-    console.log(category)
+    //console.log(category)
 
     let categorySinRepetir = new Set(category.sort((a, b) => {
         if (a > b) {
@@ -160,10 +160,10 @@ function categoryUpcoming(arrayDatos, container) {
         return 0
     }))
 
-    console.log(categorySinRepetir)
+    //console.log(categorySinRepetir)
 
     let categorySinRepetir1 = Array.from(categorySinRepetir)
-    console.log(categorySinRepetir1)
+    //console.log(categorySinRepetir1)
 
     categorySinRepetir1.map(element => {
         obj = {}
@@ -188,7 +188,7 @@ function categoryUpcoming(arrayDatos, container) {
         obj.name = name
         obj.revenue = deposit
         obj.assistance = result.toFixed(2)
-        console.log(obj)
+        //console.log(obj)
 
         statisticsUpcomig += `  
         <tr >
@@ -207,7 +207,7 @@ function categoryUpcoming(arrayDatos, container) {
 function categoryPast(arrayDatos, container) {
     let statistics = []
     let category = arrayDatos.map(events => events.category)
-    console.log(category)
+    //console.log(category)
 
     let categorySinRepetir = new Set(category.sort((a, b) => {
         if (a > b) {
@@ -219,10 +219,10 @@ function categoryPast(arrayDatos, container) {
         return 0
     }))
 
-    console.log(categorySinRepetir)
+    //console.log(categorySinRepetir)
 
     let categorySinRepetir1 = Array.from(categorySinRepetir)
-    console.log(categorySinRepetir1)
+    //console.log(categorySinRepetir1)
 
     categorySinRepetir1.map(element => {
         obj = {}
@@ -247,7 +247,7 @@ function categoryPast(arrayDatos, container) {
         obj.name = name
         obj.revenue = deposit
         obj.assistance = result.toFixed(2)
-        console.log(obj)
+        //console.log(obj)
 
         statistics += `  
         <tr >

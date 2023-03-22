@@ -138,7 +138,7 @@ function showCards(arrayDatos) {
       <h5 class="card-title">${elemento.name}</h5>
       <p class="card-text">${elemento.description}</p>
       <div class="card-footer d-flex justify-content-around">
-      <p class="card-text d-flex">$${elemento.price}</p>
+      <p class="card-text d-flex justify-content-center">$${elemento.price}</p>
       <a href="./details.html?id=${elemento._id}" class="btn btn-danger">Details</a>
     </div>
     </div>
