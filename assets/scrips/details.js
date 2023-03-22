@@ -23,7 +23,7 @@ const obtenerTarjetas = async () => {
            <p class="card-text">Description: ${selectionEvent.description}</p>
            <p class="card-text">Place: ${selectionEvent.place}</p>
            <p class="card-text">Date: ${selectionEvent.date}</p>
-           <p class="card-text">Price: ${selectionEvent.price}</p>
+           <p class="card-text">Price: $${selectionEvent.price}</p>
        </div>
        </div>
        </div>
