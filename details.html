@@ -28,30 +28,38 @@
   </svg>  
 
 <header>
-    <nav class="navbar navbar-dark bg-dark ">
-        <img class=logo src="./assets/images/Logo_Amazing_Events.png" alt="logo" width="220" height="60">
-
-        <ul class="nav justify-content-end ">
-        <li class="nav-item">
-          <a class="nav-link active text-light" aria-current="page" href="./index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active text-light" aria-current="page" href="./upcoming.html">Upcoming Events</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active text-light" aria-current="page" href="./contact.html">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active text-light" aria-current="page" href="./past.html">Past Events</a>
-        </li>
-        <li class="nav-item">
+  <nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <img class="logo" src="./assets/images/Logo_Amazing_Events.png" alt="logo" width="220" height="60">
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+        <ul class="navbar-nav ">
+          <li class="nav-item">
+            <a class="nav-link active text-light" aria-current="page" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-light" aria-current="page" href="./upcoming.html">Upcoming Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-light" aria-current="page" href="./past.html">Past Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-light" aria-current="page" href="./contact.html">Contact</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link active text-light" aria-current="page" href="./stats.html">Stats</a>
-        </li>
+          </li>
 
-      </ul>
+        </ul>
 
-    </nav>
-    
+      </div>
+    </div>
+  </nav>
+  
 
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -104,17 +112,23 @@
 
 </main>
 
- <footer class="bg-dark d-flex flex-wrap justify-content-between align-items-center border-top">
+<footer class="bg-dark d-flex flex-wrap justify-content-between align-items-center border-top">
 
   <ul class="nav col-md-4 justify-content-start list-unstyled d-flex">
-    <li class="ms-3"><a class="text-muted" href="https://twitter.com/?lang=es"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
-    <li class="ms-3"><a class="text-muted" href="https://www.instagram.com/"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
-    <li class="ms-3"><a class="text-muted" href="https://es-la.facebook.com/"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+    <li class="ms-3"><a class="text-muted" href="https://twitter.com/?lang=es" target="_blank"><svg class="bi" width="24" height="24">
+          <use xlink:href="#twitter" />
+        </svg></a></li>
+    <li class="ms-3"><a class="text-muted" href="https://www.instagram.com/" target="_blank"><svg class="bi" width="24" height="24">
+          <use xlink:href="#instagram" />
+        </svg></a></li>
+    <li class="ms-3"><a class="text-muted" href="https://es-la.facebook.com/" target="_blank"><svg class="bi" width="24" height="24">
+          <use xlink:href="#facebook" />
+        </svg></a></li>
   </ul>
 
-    <p class="text-light">Cohort-FE14-TN-M2  </p>
+  <p class="text-light">Cohort-FE14-TN-M2 </p>
 
-  </footer>
+</footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

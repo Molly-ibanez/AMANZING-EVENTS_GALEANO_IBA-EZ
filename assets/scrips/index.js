@@ -4,22 +4,26 @@ let tarjetas;
 const obtenerTarjetas = async () => {
   try {
     const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
-    if (respuesta.status === 200) {
       tarjetas = await respuesta.json()
   
     showCards(tarjetas.events, containerCards)
     crearCheckboxes(tarjetas.events)
 
 
-      }  else if (respuesta.status === 404) {
-      respuesta = await fetch('./assets/scrips/amazing.json')
-      tarjetas = await respuesta.json()
-  }
+  } catch (error) {
+    if (error){
+      const respuesta = await fetch("./assets/scrips/amazing.json");
+      return await respuesta.json();
+      
+      showCards(tarjetas.events, containerCards)
+      crearCheckboxes(tarjetas.events)
 
-}  catch (error) {
-    console.log(error);
+
+    }
+    console.log("Hubo un error");
   }
-}
+}  
+
 obtenerTarjetas()
 
 
@@ -122,7 +126,7 @@ function crearCheckboxes(arrayInfo) {
 
 function showCards(arrayDatos) {
   if (arrayDatos.length == 0) {
-    containerCards.innerHTML = "<h5 class='display-1 fw-bolder'>There are no matches in your search.</h5>"
+    containerCards.innerHTML = "<h4 class='m-4'>There are no matches in your search.</h4>"
     return
   }
 
@@ -134,11 +138,11 @@ function showCards(arrayDatos) {
     cards += `<div class="card-bordered shadow row row-cols-1 row-cols-md-3 m-2 g-3 p-4 justify-content-around">
     <div class="card h-100" style="width: 20rem;">
     <img src="${elemento.image}" class="card-img-top"  alt="...">
-    <div class="card-body">
+    <div class="card-body flex-column">
       <h5 class="card-title">${elemento.name}</h5>
       <p class="card-text">${elemento.description}</p>
       <div class="card-footer d-flex justify-content-around">
-      <p class="card-text d-flex justify-content-center">$${elemento.price}</p>
+      <p class="card-text d-flex justify-content-center">Price $${elemento.price}</p>
       <a href="./details.html?id=${elemento._id}" class="btn btn-danger">Details</a>
     </div>
     </div>

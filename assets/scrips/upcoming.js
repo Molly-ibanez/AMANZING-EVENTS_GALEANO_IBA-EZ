@@ -113,7 +113,7 @@ function showCards(arrayDatos){
 
   
   if(arrayDatos.length == 0){
-    containerCards.innerHTML = "<h5 class='display-1 fw-bolder'>There are no matches in your search.</h5>"
+    containerCards.innerHTML = "<h5>There are no matches in your search.</h5>"
     return
 }
 
@@ -127,7 +127,7 @@ upcomingFilter.forEach(elemento=> {
       <h5 class="card-title">${elemento.name}</h5>
       <p class="card-text">${elemento.description}</p>
       <div class="card-footer d-flex justify-content-around">
-      <p class="card-text d-flex">$${elemento.price}</p>
+      <p class="card-text d-flex">Price $${elemento.price}</p>
       <a href="./details.html?id=${elemento._id}" class="btn btn-danger">Details</a>
       </div>
     </div>
