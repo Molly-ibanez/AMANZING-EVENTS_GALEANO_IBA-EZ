@@ -1,5 +1,5 @@
-let tarjetas;
 
+let tarjetas;
 
 
 const containerCards = document.getElementById("containerCards")
@@ -7,34 +7,29 @@ const containerCards = document.getElementById("containerCards")
 const querySearch = document.location.search
 
 const id = new URLSearchParams(querySearch).get("id")
+
+
 console.log(id);
 
 
-const urlApi = 'https://mindhub-xj03.onrender.com/api/amazing'
-
-//Main
-main(urlApi, id, containerCards);
+const urlApi = 'https://mindhub-xj03.onrender.com/api/amazing';
 
 
-async function main (url, id, containerCards)  {
+const obtenerTarjetas = async () => {
   try {
-    const promise = await fetch(url);
+    const respuesta = await fetch(urlApi);
 
-    if (promise.status == 200) {
-      tarjetas = await promise.json();
-
-
-
+    if(respuesta.status == 200){
+      tarjetas = await respuesta.json();
     } else {
-     const  promiseJson = await fetch("./assets/data/amazing.json");
-      tarjetas = await promiseJson.json()
+      const respuestaJson = await fetch("./assets/data/amazing.json");
+      tarjetas = await respuestaJson.json();
     }
 
-
     const selectionEvent = tarjetas.events.find(events => events._id == id)
-    //console.log(selectionEvent)
+//console.log(selectionEvent)
 
-    
+  
     containerCards.innerHTML = ` 
 
     <div class="card mb-3 bordered shadow">
@@ -62,6 +57,9 @@ async function main (url, id, containerCards)  {
     console.log(("Hubo un error"));
   }
 }
+
+obtenerTarjetas()
+
 
 
 
