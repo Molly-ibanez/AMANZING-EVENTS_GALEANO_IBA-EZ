@@ -11,8 +11,8 @@ const obtenerTarjetas = async () => {
 
 
       }  else if (respuesta.status === 404) {
-      respuesta = await fetch('./assets/scrips/amazing.json')
-      tarjetas = await respuesta.json()
+        const respuestaJson = await fetch('./assets/data/amazing.json')
+      tarjetas = await respuestaJson.json()
   }
 
 }  catch (error) {

@@ -1,37 +1,37 @@
 console.log([document])
 
-let tarjetas;
-const obtenerTarjetas = async () => {
-  try {
-    const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
-      tarjetas = await respuesta.json()
-  
-    showCards(tarjetas.events, containerCards)
-    crearCheckboxes(tarjetas.events)
-
-
-  } catch (error) {
-    if (error){
-      const respuesta = await fetch("./assets/scrips/amazing.json");
-      return await respuesta.json();
-      
-      showCards(tarjetas.events, containerCards)
-      crearCheckboxes(tarjetas.events)
-
-
-    }
-    console.log("Hubo un error");
-  }
-}  
-
-obtenerTarjetas()
-
-
-
 //Constantes capturadas en variables
 const contenedorChecks = document.getElementById('checkContainer')
 const containerCards = document.getElementById('contenedor')
 const input = document.querySelector('input')
+
+
+const urlApi = 'https://mindhub-xj03.onrender.com/api/amazing';
+
+let tarjetas;
+
+const obtenerTarjetas = async () => {
+  try {
+    const respuesta = await fetch(urlApi);
+
+    if(respuesta.status == 200){
+      tarjetas = await respuesta.json();
+    } else {
+      const respuestaJson = await fetch("./assets/data/amazing.json");
+      tarjetas = await respuestaJson.json();
+    }
+
+  
+    showCards(tarjetas.events, containerCards);
+    crearCheckboxes(tarjetas.events);
+
+
+  } catch (error) {
+        console.log("Hubo un error");
+  }
+}  
+
+obtenerTarjetas()
 
 
 
@@ -112,7 +112,7 @@ function crearCheckboxes(arrayInfo) {
   checkboxCategorySinRepetir.forEach(elemento => {
 
     checks += ` 
-   <div class="bordered p-1 d-flex justify-content-between">
+   <div class="bordered p-1 d-flex ">
   <div class="form-check">
   <input class="form-check-input" type="checkbox"  id="${elemento}" value="${elemento}">
   <label class="form-check-label" for="${elemento}">${elemento}</label>
