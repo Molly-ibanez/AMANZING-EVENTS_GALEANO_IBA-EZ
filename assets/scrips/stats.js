@@ -1,51 +1,43 @@
-let cards;
-const obtenerTarjetas = async () => {
-    try {
-        const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
-
-        if (respuesta.status === 200) {
-            cards = await respuesta.json()
-
-            let pastFilter = cards.events.filter(events => cards.currentDate > events.date)
-            let upcomingFilter = cards.events.filter(events => cards.currentDate < events.date)
-
-            highestAttendance(pastFilter, table1)
-            lowestAttendance(pastFilter, table2)
-            maxCapacity(pastFilter, table3)
-            categoryUpcoming(upcomingFilter, table4)
-            categoryPast(pastFilter, table5)
-
-        } else if (respuesta.status === 404) {
-            const respuesta = await fetch('./assets/scrips/amazing.json')
-            cards = await respuesta.json()
-            let pastFilter = cards.events.filter(events => cards.currentDate > events.date)
-            let upcomingFilter = cards.events.filter(events => cards.currentDate < events.date)
-
-            highestAttendance(pastFilter, table1)
-            lowestAttendance(pastFilter, table2)
-            maxCapacity(pastFilter, table3)
-            categoryUpcoming(upcomingFilter, table4)
-            categoryPast(pastFilter, table5)
-        }
-
-
-
-    }
-    catch (error) {
-
-        console.log(error);
-    }
-}
-obtenerTarjetas()
-
-
 //Constantes capturadas en variables
-
 const table1 = document.getElementById("table1")
 const table2 = document.getElementById("table2")
 const table3 = document.getElementById("table3")
 const table4 = document.getElementById("table4")
 const table5 = document.getElementById("table5")
+
+const urlApi = 'https://mindhub-xj03.onrender.com/api/amazing';
+
+let cards;
+
+const obtenerTarjetas = async () => {
+  try {
+    const respuesta = await fetch(urlApi);
+
+    if(respuesta.status == 200){
+      cards = await respuesta.json();
+    } else {
+      const respuestaJson = await fetch("./assets/data/amazing.json");
+      cards = await respuestaJson.json();
+    }
+
+  
+    let pastFilter = cards.events.filter(events => cards.currentDate > events.date)
+    let upcomingFilter = cards.events.filter(events => cards.currentDate < events.date)
+
+    highestAttendance(pastFilter, table1)
+    lowestAttendance(pastFilter, table2)
+    maxCapacity(pastFilter, table3)
+    categoryUpcoming(upcomingFilter, table4)
+    categoryPast(pastFilter, table5)
+
+
+  } catch (error) {
+        console.log("Hubo un error");
+  }
+}  
+
+obtenerTarjetas()
+
 
 
 //FUNCIONES

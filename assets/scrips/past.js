@@ -1,32 +1,38 @@
+//Constantes capturadas en variables
+const contenedorChecks = document.getElementById('checkContainer')
+const containerCards = document.getElementById('contenedor')
+const input = document.querySelector('input')
+
+
+
+const urlApi = 'https://mindhub-xj03.onrender.com/api/amazing'
 
 let tarjetas;
 const obtenerTarjetas = async () => {
   try {
-    const respuesta = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
+    const respuesta = await fetch(urlApi)
     if (respuesta.status === 200) {
       tarjetas = await respuesta.json()
-  
+
+      showCards(tarjetas.events, containerCards)
+      crearCheckboxes(tarjetas.events)
+
+
+    } else {
+      const respuestaJson = await fetch('./assets/scrips/amazing.json')
+      tarjetas = await respuestaJson.json()
+    }
+
     showCards(tarjetas.events, containerCards)
     crearCheckboxes(tarjetas.events)
 
 
-      }  else if (respuesta.status === 404) {
-        const respuestaJson = await fetch('./assets/data/amazing.json')
-      tarjetas = await respuestaJson.json()
-  }
-
-}  catch (error) {
+  } catch (error) {
     console.log(error);
   }
 }
 obtenerTarjetas()
 
-
-
-//Constantes capturadas en variables
-const contenedorChecks = document.getElementById('checkContainer')
-const containerCards = document.getElementById('elements')
-const input = document.querySelector('input')
 
 
 

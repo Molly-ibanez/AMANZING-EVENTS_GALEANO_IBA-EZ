@@ -26,7 +26,7 @@ async function main (url, id, containerCards)  {
 
 
     } else {
-     const  promiseJson = await fetch;
+     const  promiseJson = await fetch("./assets/data/amazing.json");
       tarjetas = await promiseJson.json()
     }
 
@@ -59,7 +59,7 @@ async function main (url, id, containerCards)  {
   }
   catch (error) {
 
-    console.log(error);
+    console.log(("Hubo un error"));
   }
 }
 
